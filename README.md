@@ -1,3 +1,13 @@
+WiZR Compilation Process
+=============
+1. build h264 (open h264, https://github.com/cisco/openh264/blob/master/LICENSE) without gpl
+CFLAGS=-fPIC ./configure --disable-gpl --disable-asm
+2. move libx264 in the ffmpeg configure from EXTERNAL_LIBRARY_GPL_LIST to EXTERNAL_LIBRARY_LIST (this is because there’s no other config way to build a no-gpl ffmpeg with x264 even if we already build x264 without gpl
+3. build ffmpeg without gpl
+CFLAGS=-fPIC ./configure --enable-libx264 --disable-gpl
+all other make files remains the same as we downloaded from the official website
+
+
 FFmpeg README
 =============
 
